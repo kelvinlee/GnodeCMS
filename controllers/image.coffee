@@ -17,7 +17,7 @@ exports.upload = (req,res,next)->
 	if body? and body.data?
 		data = body.data
 		img = new Buffer(data, 'base64')
-		console.log __dirname+"/.."+config.upload+"/a.png"
+		# console.log __dirname+"/.."+config.upload+"/a.png"
 		filename = new Date().getTime()+"-"+parseInt(Math.random()*100)
 		fs.writeFile __dirname+"/.."+config.upload+"/#{filename}.png",img,(err)->
 			throw err if err
