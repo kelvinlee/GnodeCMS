@@ -17,7 +17,14 @@ exports.index = (req,res,next)->
 	# Logs.new "test",null,"test for logs."
 	# console.log "index"
 	ep = new EP.create "count","logs", (count,logs)->
-		res.render config.templateforadmin+"/logs-index",{logs_list:logs,logs_count:count,prepage:1,page:1,id:logs[logs.length-1]._id}
+		data = {}
+		data.logs_list = ogs
+		data.logs_count = count
+		data.prepage = 1
+		data.page = 1
+		if count > 1
+			data.id = logs[logs.length-1]._id
+		res.render config.templateforadmin+"/logs-index",
 
 	Logs.getCount (err,count)->
 		ep.emit "count" ,count
