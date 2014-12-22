@@ -18,7 +18,7 @@ exports.index = (req,res,next)->
 	# console.log "index"
 	ep = new EP.create "count","logs", (count,logs)->
 		data = {}
-		data.logs_list = ogs
+		data.logs_list = logs
 		data.logs_count = count
 		data.prepage = 1
 		data.page = 1
