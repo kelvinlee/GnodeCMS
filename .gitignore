@@ -3,3 +3,4 @@ node_modules
 .atom-build.json
 .sass-cache
 config.codekit
+config.js
