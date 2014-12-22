@@ -1,0 +1,121 @@
+// 适配
+=ada($key,$value)
+  #{$key}: #{$value}
+  -o-#{$key}: #{$value}
+  -ms-#{$key}: #{$value}
+  -moz-#{$key}: #{$value}
+  -webkit-#{$key}: #{$value}
+
+// 宽高
+=w($w)
+  width: $w
+=h($h)
+  height: $h
+=wh($w: auto,$h: auto)
+  width: $w
+  height: $h
+=mh($h: 100%)
+  min-height: $h
+// position 定位
+=posa()
+  position: absolute
+=posr()
+  position: relative
+=posf()
+  position: fixed
+=tl($t,$l)
+  top: $t
+  left: $l
+=bl($b,$l)
+  bottom: $b
+  left: $l
+=tr($t,$r)
+  top: $t
+  right: $r
+=br($b,$r)
+  bottom: $b
+  right: $r
+=tlr($t:0px,$l:0px,$r:0px)
+  top: $t
+  left: $l
+  right: $r
+=blr($b:0px,$l:0px,$r:0px)
+  bottom: $b
+  left: $l
+  right: $r
+=tbl($t:0px,$b:0px,$l:0px)
+  top: $t
+  bottom: $b
+  left: $l
+=tbr($t:0px,$b:0px,$r:0px)
+  top: $t
+  bottom: $b
+  right: $r
+// 隐藏边框
+=overhide
+  overflow: hidden
+// display
+=show
+  display: block
+=hide
+  display: none
+// text
+=text-center
+  text-align: center
+=text-right
+  text-align: right
+=text-left
+  text-align: left
+// Box 阴影
+=box-shadow($px,$color)
+  +ada(box-shadow,$px $color)
+
+// 圆角
+=border-radius($radius: 5px)
+  +ada("border-radius",$radius)
+
+// 动画
+@mixin keyframes($key)
+  @keyframes #{$key}
+    @content
+  @-webkit-keyframes #{$key}
+    @content
+  @-moz-keyframes #{$key}
+    @content
+  @-ms-keyframes #{$key}
+    @content
+  @-o-keyframes #{$key}
+    @content
+
+=tran($all: all,$time: .5s,$ease: ease)
+  +ada(transition, $all $time $ease)
+
+=animation($ani: fadeInUp,$time: 1s,$ease: ease)
+  +ada(animation, $ani $time $ease)
+
+=delay($time:.5s)
+  +ada(animation-delay, $time)
+
+=transform($value)
+  +ada(transform, $value)
+
+
+// 适配屏幕, large , medium , small
+=large
+  @content
+  @media print, only screen and (-webkit-min-device-pixel-ratio: 1.5), screen and (min-resolution: 144dpi), screen and (min-resolution: 144dppx)
+    @content
+  @media only screen and (max-width: 735px) and (max-device-width: 768px)
+    @content
+
+=medium
+  @media only screen and (max-width: 1024px)
+    @content
+  @media only screen and (max-width: 735px) and (max-device-width: 768px) and (max-width: 1024px)
+    @content
+
+=small
+  @media only screen and (max-width: 735px) and (max-device-width: 768px)
+    @content
+  @media only screen and (max-width: 735px) and (max-device-width: 768px) and (max-width: 735px) and (max-device-width: 768px)
+    @content

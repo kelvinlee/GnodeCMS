@@ -1,0 +1,81 @@
+<%
+  // css.push("homepage") //为此页增加css
+  // js.push("homepage") //为此页增加 js
+%>
+<%_menu = "logs"%>
+<%include header%>
+
+<h3 class="header-text m-top-lg">日志列表</h3>
+<div class="row">
+    <div class="col-md-12">
+        <div class="smart-widget">
+            <div class="smart-widget-header">
+                日志列表
+                <span class="smart-widget-option">
+                    <span class="refresh-icon-animated">
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                    </span>
+                </span>
+            </div>
+            <div class="smart-widget-inner">
+                <div class="smart-widget-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>简介</th>
+                                <th>操作人</th>
+                                <th>类型</th>
+                                <th style="width:20%">日期</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (var i = 0; i < logs_list.length; i++) { %>
+                            <tr>
+                                <td><%=logs_list[i].description%></td>
+                                <td></td>
+                                <td><%=logs_list[i].type%></td>
+                                <td><span class="badge badge-info"><%=helper.formatDate(logs_list[i].create_at)%></span></td>
+                            </tr>
+                            <%};%>
+                        </tbody>
+                    </table>
+                    <div class="clearfix">
+                        <% 
+                            var url = "/admin/logs"; 
+                            var totalpage = Math.ceil(logs_count/config.list_count);
+                            var prelink = "#";
+                            var nextlink = "#";
+                            var star = 1;
+                            var end = totalpage;
+                            // 显示分页数量.
+                            var showpagenum = 10;
+                            page = parseInt(page);
+                        %>
+                        <div class="dataTables_info pull-left">
+                            <%=page%> / <%=totalpage%> 页,总计 <%=logs_count%> 条
+                        </div>
+                        <ul class="pagination pagination-sm pull-right">
+                          <%var active = page == 1?"active":""%>
+                          <% prelink = url+"/page?prepage="+prepage+"&page="+(page-1)+"&id="+id; if (active) { prelink = "#" }%>
+                          <% nextlink = url+"/page?prepage="+prepage+"&page="+(page+1)+"&id="+id; if (page >= totalpage) { nextlink = "#" }%>
+                          <li><a href="<%=prelink%>">«</a></li>
+                          <% if (page<=showpagenum/2) { star = 1}else {star = page-showpagenum/2} %>
+                          <% if (star>=totalpage-showpagenum) {end = totalpage}else {end = star+showpagenum} %>
+                          <% for (var i = star; i <= end; i++) { %>
+                          <% 
+                            active = page == i?"active":""; 
+                            var pagelink = url+"/page?prepage="+prepage+"&page="+i+"&id="+id
+                            if (active == "active") {pagelink = "#";}
+                          %>
+                          <li class="<%=active%>"><a href="<%=pagelink%>"><%=i%></a></li>
+                          <% }; %>
+                          <li><a href="<%=nextlink%>">»</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- ./smart-widget-inner -->
+        </div><!-- ./smart-widget -->
+    </div>
+</div>
+
+<%include footer%>

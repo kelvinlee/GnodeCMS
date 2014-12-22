@@ -1,0 +1,103 @@
+<%
+  // css.push("homepage") //为此页增加css
+  // js.push("homepage") //为此页增加 js
+%>
+<%_menu = "setting"%>
+<%include header%>
+
+<h3 class="header-text m-top-lg">系统参数设置</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="smart-widget">
+            <div class="smart-widget-header">
+                基本参数设置
+                <span class="smart-widget-option">
+                    <span class="refresh-icon-animated">
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                    </span>
+                    <!-- <a href="form_validation.html#" class="widget-toggle-hidden-option">
+                        <i class="fa fa-cog"></i>
+                    </a>
+                    <a href="form_validation.html#" class="widget-collapse-option" data-toggle="collapse">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a href="form_validation.html#" class="widget-refresh-option">
+                        <i class="fa fa-refresh"></i>
+                    </a>
+                    <a href="form_validation.html#" class="widget-remove-option">
+                        <i class="fa fa-times"></i>
+                    </a> -->
+                </span>
+            </div>
+            <div class="smart-widget-inner">
+                <div class="smart-widget-body">
+                    <form name="settingForm" method="post" class="form-horizontal no-margin" action="/admin/setting/edit_post" >
+                        <% for (var k in config) { %>
+                        <div class="form-group">
+                            <label class="control-label col-lg-4"><%= language.zh_cn(_menu,k)%></label>
+                            <div class="col-lg-8">
+                                <input type="text" name="<%= k%>" class="form-control input-sm" placeholder="<%= config[k]%>" data-parsley-id="<%= k%>" value="<%= config[k]%>"><ul class="parsley-errors-list" id="parsley-id-<%= k%>"></ul>
+                            </div><!-- /.col -->
+                        </div><!-- /form-group -->
+                        <% } %>
+                        <div>
+                            <p style="text-align:right">请注意,如果修改错误可能导致网站无法运行.</p>
+                        </div>
+                        <div class="text-right m-top-md">
+                            <span onclick="post('[name=settingForm]')" class="btn btn-info">修改</span>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- ./smart-widget-inner -->
+        </div><!-- ./smart-widget -->
+    </div>
+    <div class="col-md-6">
+        <div class="smart-widget widget-light-grey">
+            <div class="smart-widget-header">
+                自定义参数 [暂时无法使用]
+                <span class="smart-widget-option">
+                    <span class="refresh-icon-animated">
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                    </span>
+                    <!-- <a href="form_validation.html#" class="widget-toggle-hidden-option">
+                        <i class="fa fa-cog"></i>
+                    </a>
+                    <a href="form_validation.html#" class="widget-collapse-option" data-toggle="collapse">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a href="form_validation.html#" class="widget-refresh-option">
+                        <i class="fa fa-refresh"></i>
+                    </a>
+                    <a href="form_validation.html#" class="widget-remove-option">
+                        <i class="fa fa-times"></i>
+                    </a> -->
+                </span>
+            </div>
+            <div class="smart-widget-inner">
+                <div class="smart-widget-body">
+                    <form class="no-margin" id="type-constraint" data-validate="parsley" novalidate="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">自定义参数名</label>
+                                    <input type="text" name="customkey" class="form-control input-sm" placeholder="自定义参数名">
+                                </div><!-- /form-group -->
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">参数值</label>
+                                    <input type="text" name="customvalue" class="form-control input-sm" placeholder="参数值">
+                                </div><!-- /form-group -->
+                            </div>
+                        </div>
+                        <div class="text-right m-top-md">
+                            <button type="button" class="btn btn-info">添加</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- ./smart-widget-inner -->
+        </div><!-- ./smart-widget -->
+    </div>
+</div>
+
+<%include footer%>

@@ -1,0 +1,46 @@
+exports.config={
+	// debug: true,
+	name:"GNode - CMS",
+	description:"GNodeCMS 是为了方便 Node 用户而制作的一款精巧型 CMS.",
+	site_meta:'<meta name="Author" content="Kelvin" />',
+	version:"0.1.0",
+	upload:"/public/uploadDir",
+	host:"http://cms.giccoo.com",
+	list_count:20,
+	//template name same as folder name.
+	template:"default",
+	templateforadmin:"admin",
+	cdn:"",
+	pm2:true,
+	Origin: "http://app.giccoo.com:80",
+
+	//default logo.png
+	site_logo:"logo.png",
+	// site_static_host:"",
+	// site_enable_search_preview:!1,
+	// site_google_search_domain:"giccoo.com",
+	
+	mdb:"mongodb://localhost/gnodecms-database",
+	mdb_user:"",
+	mdb_passwd:"",
+	// mydb:"localhost",
+	// db_user:"root",
+	// db_passwd:"mysqlpassword",
+	// db_database:"gnodecms",
+
+	// must change to yourself code
+	session_secret:"gnodecms_club",
+	// must change to yourself code
+	auth_cookie_name:"gnodecms_club",
+	ip:"127.0.0.1",
+	port:8086
+	// post_interval:2000,
+	// mail_opts:{host:"smtp.126.com",
+	// port:25,
+	// auth:{user:"test@126.com",pass:"test"}},
+	// secret:"kelvinbuild",
+	// wechat_token:"kelvinbuild",
+	// APPID:"wx7bad1794fc490672",
+	// SECRET:"95e8c22a0cb5d4f20c7840addb0385d1",
+	// plugins:[]
+};

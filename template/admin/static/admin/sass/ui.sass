@@ -1,0 +1,40 @@
+input
+  color: $font-default-color
+
+// badge
+
+.label, .badge
+  background-color: #D0D1CB
+  color: #777
+  font-weight: 500
+  font-size: 10px
+  +animation(shake)
+  +delay(0.8s)
+  &-square
+    +border-radius(2px)
+  &-success
+    background-color: $color-important-normal
+    color: $color-white
+  &-danger
+    background-color: $color-danger
+    color: $color-white
+  &-warning
+    background-color: $color-warning
+    color: $color-white
+  &-info
+    background-color: $color-info
+    color: $color-white
+  &-primary
+    background-color: $color-primary
+    color: $color-white
+  &-purple
+    background-color: $color-purple
+    color: $color-white
+
+// menu
+.hover-menu
+  .hover-menu-panel
+    +animation(fadeInUp)
+  &:hover
+    .hover-menu-panel
+      +show

@@ -1,0 +1,7 @@
+exports.User = require './user'
+exports.Article = require './article'
+exports.Comment = require './comment'
+exports.Type = require './type'
+exports.Tag = require './tag'
+exports.Menu = require './menu'
+exports.Logs = require './logs'

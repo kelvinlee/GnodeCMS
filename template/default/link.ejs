@@ -1,0 +1,4 @@
+<link href="/css/base.css" media="all" rel="stylesheet" type="text/css" />
+<% if (typeof(css) == "object") { for(var i=0;i<css.length;i++){ %>
+  <link href="/css/<%=css[i]%>.css" media="all" rel="stylesheet" type="text/css" />
+<% }}%>

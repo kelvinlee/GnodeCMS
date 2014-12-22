@@ -1,0 +1,1 @@
+exports.zh_cn = require './zh-cn'

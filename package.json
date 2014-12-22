@@ -1,0 +1,25 @@
+{
+  "name": "Samsung-wechat",
+  "description": "This is samsung wechat.",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "coffee-script":"*",
+    "express": "*",
+    "cookie-parser":"*",
+    "body-parser":"*",
+    "express-session":"*",
+    "mongoose":"*",
+    "connect-mongo":"*",
+    "mysql":"*",
+    "bufferhelper":"*",
+    "showdown":"*",
+    "validator":"*",
+    "eventproxy":"*",
+    "node-markdown":"*",
+    "socket.io":"*",
+    "xml2js":"*",
+    "ejs":"*",
+    "xss":"*"
+  }
+}

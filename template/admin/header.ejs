@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN" prefix="og: http://ogp.me/ns#">
+<head>
+  <meta charset="utf-8" />
+  <%- config.site_meta %>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9" />
+  <title><%= title%></title>
+  <link href="/admin/bs3/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/admin/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/admin/css/ionicons.min.css" rel="stylesheet">
+  <link href="/admin/css/base.css" media="all" rel="stylesheet" type="text/css" />
+  <% if (typeof(css) == "object") { for(var i=0;i<css.length;i++){ %>
+    <link href="/css/<%=css[i]%>.css" media="all" rel="stylesheet" type="text/css" />
+  <% }}%>
+
+</head>
+<body>
+  <div class="wrapper">
+  <%include nav%>
+  <%include sidebar%>
+    <div class="main-container">
+      <div class="padding-md">

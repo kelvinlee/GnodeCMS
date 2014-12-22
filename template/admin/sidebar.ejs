@@ -1,0 +1,155 @@
+<aside class="sidebar-menu fixed">
+<div class="main-menu">
+	<ul class="accordion">
+		<li class="menu-header">
+			主菜单
+		</li>
+		<li class="bg-palette1 <%= checkMenu('home',_menu)%>">
+			<a href="/admin">
+				<span class="menu-content block">
+					<span class="menu-icon"><i class="block fa fa-tachometer fa-lg"></i></span>
+					<span class="text m-left-sm">Dashboard</span>
+				</span>
+				<span class="menu-content-hover block">
+					首页
+				</span>
+			</a>
+		</li>
+		<li class="openable bg-palette2 <%= checkMenu('article',_menu)%>">
+			<a href="/admin/blog">
+				<span class="menu-content block">
+					<span class="menu-icon"><i class="block fa fa-file-text-o fa-lg"></i></span>
+					<span class="text m-left-sm">文章</span>
+					<!-- <small class="badge badge-danger badge-square bounceIn animation-delay5 m-left-xs pull-right">5</small> -->
+					<!-- <small class="badge badge-warning badge-square bounceIn animation-delay5 m-left-xs pull-right">5</small> -->
+					<span class="submenu-icon"><!-- <i class="fa fa-chevron-right"></i> --></span>
+				</span>
+				<span class="menu-content-hover block">
+					文章
+				</span>
+			</a>
+			<ul class="submenu">
+				<li><a href="/admin/blog/new"><span class="submenu-label">新建文章</span></a></li>
+				<li><a href="/admin/blog"><span class="submenu-label">所有文章</span></a></li>
+				<li><a href="/admin/blog/newtype"><span class="submenu-label">新建分类</span></a></li>
+				<li><a href="/admin/blog/alltype"><span class="submenu-label">所有分类</span></a></li>
+				<li><a href="/admin/blog/newtag"><span class="submenu-label">新建标签</span></a></li>
+				<li><a href="/admin/blog/alltag"><span class="submenu-label">所有标签</span></a></li>
+			</ul>
+		</li>
+		<li class=" bg-palette3 <%= checkMenu('comments',_menu)%>">
+			<a href="/admin/comments">
+				<span class="menu-content block">
+					<span class="menu-icon"><i class="block fa fa-comments-o fa-lg"></i></span>
+					<span class="text m-left-sm">评论</span>
+					<!-- <small class="badge badge-danger badge-square bounceIn animation-delay5 m-left-xs pull-right">5</small> -->
+					<small class="badge badge-success badge-square bounceIn animation-delay5 m-left-xs pull-right">5</small>
+				</span>
+				<span class="menu-content-hover block">
+					评论
+				</span>
+			</a>
+		</li>
+		<li class=" bg-palette4 <%= checkMenu('page',_menu)%>">
+			<a href="/admin/page">
+				<span class="menu-content block">
+					<span class="menu-icon"><i class="block fa fa-desktop fa-lg"></i></span>
+					<span class="text m-left-sm">页面</span>
+				</span>
+				<span class="menu-content-hover block">
+					页面
+				</span>
+			</a>
+		</li>
+		<li class="bg-palette1 <%= checkMenu('menu',_menu)%>">
+			<a href="/admin/menu">
+				<span class="menu-content block">
+					<span class="menu-icon"><i class="block fa fa-list fa-lg"></i></span>
+					<span class="text m-left-sm">菜单</span>
+				</span>
+				<span class="menu-content-hover block">
+					菜单
+				</span>
+			</a>
+		</li>
+		<li class="bg-palette2 <%= checkMenu('media',_menu)%>">
+			<a href="/admin/meida">
+				<span class="menu-content block">
+					<span class="menu-icon"><i class="block fa fa-files-o fa-lg"></i></span>
+					<span class="text m-left-sm">多媒体</span>
+					<!-- <small class="badge badge-warning badge-square bounceIn animation-delay6 m-left-xs pull-right">7</small> -->
+				</span>
+				<span class="menu-content-hover block">
+					多媒体
+				</span>
+			</a>
+		</li>
+		<li class="bg-palette1 <%= checkMenu('user',_menu)%>">
+			<a href="/admin/user">
+				<span class="menu-content block">
+					<span class="menu-icon"><i class="block fa fa-users fa-lg"></i></span>
+					<span class="text m-left-sm">用户</span>
+				</span>
+				<span class="menu-content-hover block">
+					用户
+				</span>
+			</a>
+		</li>
+		<li class="menu-header">
+			其他
+		</li>
+		<li class=" bg-palette3 <%= checkMenu('setting',_menu)%>">
+			<a href="/admin/setting">
+				<span class="menu-content block">
+					<span class="menu-icon"><i class="block fa fa-gear fa-lg"></i></span>
+					<span class="text m-left-sm">系统设置</span>
+					<!-- <span class="submenu-icon"><i class="fa fa-chevron-right"></i></span> -->
+				</span>
+				<span class="menu-content-hover block">
+					设置
+				</span>
+			</a>
+		</li>
+		<li class=" bg-palette4 <%= checkMenu('logs',_menu)%>">
+			<a href="/admin/logs">
+				<span class="menu-content block">
+					<span class="menu-icon"><i class="block fa fa-calendar-o fa-lg"></i></span>
+					<span class="text m-left-sm">日志</span>
+					<!-- <span class="submenu-icon"><i class="fa fa-chevron-right"></i></span> -->
+				</span>
+				<span class="menu-content-hover block">
+					日志
+				</span>
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="sidebar-fix-bottom clearfix">
+	<div class="user-dropdown dropup pull-left">
+		<a href="#" class="dropdwon-toggle font-18" data-toggle="dropdown"><i class="fa fa-cogs"></i>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a>
+					页面加载时间:
+					<span class="badge badge-success bounceIn animation-delay2 pull-right"><%= RunTime()%></span>
+				</a>
+			</li>			  
+			<li>
+				<a>
+					内存:
+					<span class="badge badge-purple bounceIn animation-delay3 pull-right">2</span>
+				</a>
+			</li>			  
+			<li>
+				<a class="sidebarRight-toggle">
+					硬盘:
+					<span class="badge badge-success bounceIn animation-delay4 pull-right">7</span>
+				</a>
+			</li>
+			<!-- <li class="divider"></li> -->	  	  
+		</ul>
+	</div>
+	<a href="lockscreen.html" class="pull-right font-18"><i class="ion-log-out"></i></a>
+</div>
+</aside>
