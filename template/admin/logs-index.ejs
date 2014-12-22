@@ -19,6 +19,7 @@
             </div>
             <div class="smart-widget-inner">
                 <div class="smart-widget-body">
+                    <% if (typeof logs_list != "undefined" && logs_list != null) {%>
                     <table class="table">
                         <thead>
                             <tr>
@@ -72,6 +73,9 @@
                           <li><a href="<%=nextlink%>">»</a></li>
                         </ul>
                     </div>
+                    <%}else{%>
+                    <div>暂无日志</div>
+                    <%}%>
                 </div>
             </div><!-- ./smart-widget-inner -->
         </div><!-- ./smart-widget -->
