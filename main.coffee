@@ -20,7 +20,8 @@ MongoStore = require('connect-mongo')(session)
 app.use cookieParser(config.session_secret)
 app.use bodyParser.urlencoded
   extended: true
-app.use bodyParser.json()
+  limit: '50mb'
+app.use bodyParser.json({limit: '50mb'})
 app.use session
   secret: config.session_secret,
   resave: true
