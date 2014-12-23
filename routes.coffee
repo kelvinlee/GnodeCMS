@@ -43,15 +43,15 @@ routeURL = (req,res,next)->
   # Check 移动端. [未完成]
   # 注释: 因为移动端一般使用3g/4g, 是按照流量收费,所以应该页面和图片都比较小,
   # 所以此处的功能是为了优化性能.如果您使用的是自适应方式,请无视此处或者注释此处节省性能.
-  mobile = false
-  if req["headers"]? and req.headers["user-agent"]?
-    UserAgent = req.headers["user-agent"].toLowerCase()
-    # ipad = UserAgent.match(/ipad/i)? and UserAgent.match(/ipad/i)[0] is "ipad"
-    iphone = UserAgent.match(/iphone os/i)? and UserAgent.match(/iphone os/i)[0] is "iphone os"
-    android = UserAgent.match(/android/i)? and UserAgent.match(/android/i)[0] is "android"
-    ucweb = UserAgent.match(/ucweb/i)? and UserAgent.match(/ucweb/i)[0] is "ucweb"
-    mobile = true if iphone or android or ucweb
-  res.locals.mobile = mobile
+  # mobile = false
+  # if req["headers"]? and req.headers["user-agent"]?
+  #   UserAgent = req.headers["user-agent"].toLowerCase()
+  #   # ipad = UserAgent.match(/ipad/i)? and UserAgent.match(/ipad/i)[0] is "ipad"
+  #   iphone = UserAgent.match(/iphone os/i)? and UserAgent.match(/iphone os/i)[0] is "iphone os"
+  #   android = UserAgent.match(/android/i)? and UserAgent.match(/android/i)[0] is "android"
+  #   ucweb = UserAgent.match(/ucweb/i)? and UserAgent.match(/ucweb/i)[0] is "ucweb"
+  #   mobile = true if iphone or android or ucweb
+  # res.locals.mobile = mobile
 
   goRoute req,res,next
 
