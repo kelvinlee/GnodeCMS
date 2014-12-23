@@ -14,7 +14,7 @@ module.exports = (app)->
   app.all "*", (req,res,next)->
     if config.Origin?
       res.header("Access-Control-Allow-Origin", config.Origin)
-      res.header("Access-Control-Allow-Headers", "X-Requested-With")
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
     next()
 
   app.get "*", publicFun
