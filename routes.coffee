@@ -13,7 +13,7 @@ module.exports = (app)->
   # folderRoute 可以向下增加一级目录.
   app.all "*", (req,res,next)->
     if config.Origin?
-      res.header("Access-Control-Allow-Origin", config.Origin)
+      res.header("Access-Control-Allow-Origin", "*")
       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
     next()
 
