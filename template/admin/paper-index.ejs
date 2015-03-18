@@ -1,0 +1,59 @@
+<%
+	// css.push("homepage") //为此页增加css
+	// js.push("homepage") //为此页增加 js
+%>
+<%_menu = "paper"%>
+<%include header%>
+<h3 class="header-text">页面列表 <span class="sub-header">所有页面的信息</span></h3>
+<%breadcrumb.push({name:"页面列表"});%>
+<%include breadcrumb%>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="smart-widget">
+			<div class="smart-widget-inner">
+				<div class="smart-widget-header">
+					页面列表
+					<span class="smart-widget-option">
+						<span class="refresh-icon-animated">
+							<i class="fa fa-circle-o-notch fa-spin"></i>
+						</span>
+						<a href="/admin/paper/new" class="widget-toggle-hidden-option">
+							<i class="fa fa-plus"></i>
+						</a>
+					</span>
+				</div>
+				<div class="smart-widget-inner">
+					<div class="smart-widget-body">
+						<table class="table">
+							<thead>
+									<tr>
+										<th>标题</th>
+										<th>作者</th>
+										<th>创建时间</th>
+										<th style="width:20%">操作</th>
+									</tr>
+							</thead>
+							<tbody>
+								<% for (var i = 0; i < paper_list.length; i++) { %>
+								<tr>
+									<td><%=paper_list[i].title%></td>
+									<td><%=paper_list[i].author.username%></td>
+									<td><span class="badge badge-info"><%=helper.formatDate(paper_list[i].create_at)%></span></td>
+									<td><a href="/paper/<%=paper_list[i].url%>">查看</a> | <a href="/admin/paper/<%=paper_list[i]._id%>">修改</a> | <a href="/admin/paper/del_post/<%=paper_list[i]._id%>" onclick="return removepost(this,function(){window.location.reload()})" title="<%=paper_list[i].title%>">删除</a></td>
+								</tr>
+								<% } %>
+							</tbody>
+						</table>
+						<%
+							var url = "/admin/paper";
+							var counts = page_count;
+						%>
+						<%include page-nums%>
+					</div>
+				</div>
+			</div><!-- ./smart-widget-inner -->
+		</div>
+	</div>
+</div>
+
+<%include footer%>

@@ -6,6 +6,7 @@ User = require("../../model/mongo").User
 
 exports.index = (req,res,next)->
   # index 为首页,如果没有二级参数,则默认访问此页.
+  console.log "sign index"
   sign_in req,res,next
 
 sign_in = (req,res,next)->

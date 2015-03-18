@@ -1,7 +1,7 @@
 # app.js for production
 path = require 'path'
 express = require 'express'
-
+multer = require 'multer'
 #var io = require socket.io').listen(server);
 config = require('./config').config
 routes = require './routes'
@@ -17,6 +17,7 @@ bodyParser = require('body-parser')
 session = require('express-session')
 MongoStore = require('connect-mongo')(session)
 
+app.use multer({ dest: path.join __dirname, 'public/uploadDir'})
 app.use cookieParser(config.session_secret)
 app.use bodyParser.urlencoded
   extended: true
@@ -43,6 +44,7 @@ app.use (req,res,next)->
   res.locals.css = []
   res.locals.js = []
   res.locals.title = ""
+  res.locals.breadcrumb = []
   next()
 # app.use sign.userinfo
 # app.use sign.default

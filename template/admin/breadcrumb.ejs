@@ -1,0 +1,10 @@
+<ul class="breadcrumb">
+	<li><span class="primary-font"><i class="icon-home"></i></span><a href="/admin"> 首页</a></li>
+	<% if (breadcrumb.length >=1 ) {%>
+	<% for (var i=0;i<breadcrumb.length;i++) {%>
+	<% if (i == breadcrumb.length-1) {%>
+	<li><%=breadcrumb[i].name%></li>
+	<%}else{%>
+	<li><a href="<%=breadcrumb[i].url%>"><%=breadcrumb[i].name%></a></li>
+	<% } }} %>
+</ul>

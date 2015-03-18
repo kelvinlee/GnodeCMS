@@ -34,17 +34,40 @@ $(document).ready ->
 		$("aside").toggleClass "active"
 		$(".wrapper").toggleClass "display-left"
 		return
+	$("[name=dropzone]").dropzone({ url: "/admin/media/upload", addRemoveLinks:"/admin/media/del" }) if $("[name=dropzone]").length>0
 
-
-
+removepost = (obj,callback = null)->
+	yestopost = ->
+		$.ajax
+			type:"post"
+			dataType:"json"
+			url: $(obj).attr "href"
+			data: [{name:"del",value:"true"}]
+			success: (msg)->
+				type = "warning"
+				type = "warning" if msg.recode is 201
+				type = "information" if msg.recode is 202
+				type = "error" if msg.recode is 203
+				type = "success" if msg.recode is 200
+				noty
+					text: msg.reason
+					type: type
+					layout: 'topCenter'
+					timeout: '3000'
+				if msg.recode is 200 and callback?
+					callback.call()
+			error: (msg)->
+				console.log msg
+	yestopost() if confirm "你确定要删除'#{$(obj).attr("title")}'"
+	return false
 post = (form,callback = null)->
+	CKupdate()
 	$.ajax
 		type:"post"
 		dataType:"json"
 		url: $(form).attr "action"
 		data: $(form).serializeArray()
 		success: (msg)->
-
 			type = "warning"
 			type = "warning" if msg.recode is 201
 			type = "information" if msg.recode is 202
@@ -56,5 +79,8 @@ post = (form,callback = null)->
 				layout: 'topCenter'
 				timeout: '3000'
 			if msg.recode is 200 and callback?
-				callback msg
+				callback.call msg
 
+CKupdate = ->
+	return "" if typeof CKEDITOR is "undefined"
+	CKEDITOR.instances[instance].updateElement() for instance of CKEDITOR.instances

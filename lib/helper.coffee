@@ -54,3 +54,13 @@ exports.formatDate = format_date
 recode = (recode = 200, reason = "success")->
 	return {recode:recode,reason:reason}
 exports.recode = recode
+
+#
+# 返回默认html
+#
+# @param {bool}
+# @return {string}
+#
+bool = (bool = false)->
+	return if bool then '<i class="fa fa-check"></i>' else '<i class="fa fa-close"></i>'
+exports.bool = bool

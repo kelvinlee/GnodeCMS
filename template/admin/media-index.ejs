@@ -1,0 +1,57 @@
+<%
+	css.push("colorbox") //为此页增加css
+	css.push("dropzone/css/dropzone") 
+	js.push("jquery.colorbox.min"); //为此页增加 js
+	js.push("jquery.popupoverlay.min")
+	js.push("dropzone.min")
+	js.push("page/media");
+%>
+<%_menu = "media"%>
+<%include header%>
+<h3 class="header-text">文件列表 <span class="sub-header">所有上传的文件列表</span></h3>
+<%breadcrumb.push({name:"文件列表"});%>
+<%include breadcrumb%>
+<div class="row">
+	<div class="col-sm-12">
+		<form name="upload" action="/admin/media/upload" enctype="multipart/form-data" class="dropzone dz-clickable" method="post">
+			<div class="dz-default dz-message"><span>将要上传的文件拖拽到此处 <i class="fa fa-cloud-upload fa-lg m-left-xs text-success"></i><br><small>也可以点击</small></span></div>
+			<div class="fallback">
+				<input name="file" type="file" multiple />
+			</div>
+		</form>
+		<div class="gallery-list js-masonry m-top-md">
+		<%for (var i = 0;i<files.length;i++) {%>
+		<%if (/(\.jpg|\.png)$/.test(files[i])) {%>
+			<div class="gallery-item">
+				<div class="gallery-wrapper">
+					<a class="gallery-remove" file="<%=files[i]%>"><i class="fa fa-times"></i></a>
+					<img src="/uploadDir/<%=files[i]%>" alt="">
+					
+					<div class="gallery-overlay">
+						<a href="/uploadDir/<%=files[i]%>" class="gallery-action enlarged-photo"><i class="fa fa-search-plus fa-lg"></i></a>
+						<!-- <a href="gallery.html#" class="gallery-action animation-dalay"><i class="fa fa-link fa-lg"></i></a> -->
+					</div>
+				</div>
+			</div>
+		<%}}%>
+		</div>
+	</div>
+</div>
+<!-- Delete confirmation -->
+<div class="custom-popup delete-confirmation-popup" id="deleteGalleryConfirm" style="display:none">
+	<div class="popup-header text-center">
+		<span class="fa-stack fa-4x">
+		  <i class="fa fa-circle fa-stack-2x"></i>
+		  <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+		</span>
+	</div>
+	<div class="popup-body text-center">
+		<h5>你确定要删除这个文件吗?</h5>
+		<strong class="block m-top-xs"><i class="fa fa-exclamation-circle m-right-xs text-danger"></i>这个操作无法被恢复</strong>
+		<div class="text-center m-top-lg">
+			<a id="removeBtn" href="/admin/media/del" class="btn btn-success m-right-sm">删除</a>
+			<a class="btn btn-default deleteGalleryConfirm_close">取消</a>
+		</div>
+	</div>
+</div>
+<%include footer%>

@@ -6,7 +6,9 @@ Logs = require("../../model/mongo").Logs
 language = require "../../language"
 
 exports.before = (req,res,next,before)->
-	if res.locals.loginAdmin
+	sess = req.session
+	userid = sess.loginAdmin or req.cookies.admin_user
+	if userid
 		before req,res,next
 	else
 		res.redirect '/admin/sign/in'
@@ -17,14 +19,15 @@ exports.index = (req,res,next)->
 	# Logs.new "test",null,"test for logs."
 	# console.log "index"
 	ep = new EP.create "count","logs", (count,logs)->
+		console.log logs,count
 		data = {}
 		data.logs_list = logs
 		data.logs_count = count
 		data.prepage = 1
 		data.page = 1
-		if count > 1
+		if count >= 1
 			data.id = logs[logs.length-1]._id
-		res.render config.templateforadmin+"/logs-index",
+		res.render config.templateforadmin+"/logs-index",data
 
 	Logs.getCount (err,count)->
 		ep.emit "count" ,count

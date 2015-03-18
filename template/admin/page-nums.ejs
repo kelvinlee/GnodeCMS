@@ -1,0 +1,35 @@
+<%
+	var totalpage = Math.ceil(counts/config.list_count);
+	var prelink = "#";
+	var nextlink = "#";
+	var star = 1;
+	var end = totalpage;
+	// 显示分页数量.
+	var showpagenum = 10;
+	page = parseInt(page);
+%>
+<% if (totalpage>0) { %>
+<div class="clearfix">
+	
+	<div class="dataTables_info pull-left">
+		<%=page%> / <%=totalpage%> 页,总计 <%=counts%> 条
+	</div>
+	<ul class="pagination pagination-sm pull-right">
+		<%var active = page == 1?"active":""%>
+		<% prelink = url+"/page?prepage="+prepage+"&page="+(page-1)+"&id="+id?id:""; if (active) { prelink = "#" }%>
+		<% nextlink = url+"/page?prepage="+prepage+"&page="+(page+1)+"&id="+id?id:""; if (page >= totalpage) { nextlink = "#" }%>
+		<li><a href="<%=prelink%>">«</a></li>
+		<% if (page<=showpagenum/2) { star = 1}else {star = page-showpagenum/2} %>
+		<% if (star>=totalpage-showpagenum) {end = totalpage}else {end = star+showpagenum} %>
+		<% for (var i = star; i <= end; i++) { %>
+		<% 
+			active = page == i?"active":""; 
+			var pagelink = url+"/page?prepage="+prepage+"&page="+i+"&id="+id?id:""
+			if (active == "active") {pagelink = "#";}
+		%>
+		<li class="<%=active%>"><a href="<%=pagelink%>"><%=i%></a></li>
+		<% }; %>
+		<li><a href="<%=nextlink%>">»</a></li>
+	</ul>
+</div>
+<% } %>

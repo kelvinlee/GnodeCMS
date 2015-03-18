@@ -81,24 +81,25 @@ goRoute = (req,res,next,folder = "")->
     return 
   # 调取文件.
   # console.log "./controllers/"+folder+filename+".coffee"
-  # try
-  CTL = require "./controllers/"+folder+filename+".coffee"
-  before = (req,res,next)->
-    if not Path[second]? or typeof CTL["default"] isnt "function"
-      CTL["index"](req,res,next)
-    else if typeof CTL[Path[second]] is "function"
-      CTL[Path[second]](req,res,next)
+  try
+    CTL = require "./controllers/"+folder+filename+".coffee"
+    before = (req,res,next)->
+      # console.log Path,Path[second]?,typeof CTL["default"] isnt "function"
+      if not Path[second]? or Path[second] is "" or typeof CTL["default"] isnt "function"
+        CTL["index"](req,res,next)
+      else if typeof CTL[Path[second]] is "function"
+        CTL[Path[second]](req,res,next)
+      else
+        CTL["default"](req,res,next)
+    if CTL["before"]?
+      CTL["before"](req,res,next,before)
     else
-      CTL["default"](req,res,next)
-  if CTL["before"]?
-    CTL["before"](req,res,next,before)
-  else
-    before req,res,next
+      before req,res,next
   # console.log "second:",Path[second]
   # console.log "next"
   
-  # catch error
-    # next()
+  catch error
+    next()
 
 
   

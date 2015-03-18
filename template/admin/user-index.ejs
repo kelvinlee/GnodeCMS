@@ -1,19 +1,65 @@
 <%
-  // css.push("homepage") //为此页增加css
-  // js.push("homepage") //为此页增加 js
+	// css.push("homepage") //为此页增加css
+	// js.push("homepage") //为此页增加 js
 %>
 <%_menu = "user"%>
 <%include header%>
-
 <h3 class="header-text">用户列表 <span class="sub-header">所有用户的信息</span></h3>
+<%breadcrumb.push({name:"用户列表"});%>
+<%include breadcrumb%>
 <div class="row">
-  <div class="col-sm-12">
-    <div class="smart-widget">
-        <div class="smart-widget-inner">
-            sdf
-        </div><!-- ./smart-widget-inner -->
-    </div>
-  </div>
+	<div class="col-sm-12">
+		<div class="smart-widget">
+			<div class="smart-widget-inner">
+				<div class="smart-widget-header">
+					用户列表
+					<span class="smart-widget-option">
+						<span class="refresh-icon-animated">
+							<i class="fa fa-circle-o-notch fa-spin"></i>
+						</span>
+						<a href="/admin/user/new" class="widget-toggle-hidden-option">
+							<i class="fa fa-plus"></i>
+						</a>
+					</span>
+				</div>
+				<div class="smart-widget-inner">
+					<div class="smart-widget-body">
+						<table class="table">
+							<thead>
+									<tr>
+											<th>用户名/昵称</th>
+											<th>E-mail</th>
+											<th>是否激活</th>
+											<th>是否管理员</th>
+											<th>注册时间</th>
+											<th>登陆时间</th>
+											<th style="width:20%">操作</th>
+									</tr>
+							</thead>
+							<tbody>
+								<% for (var i = 0; i < user_list.length; i++) { %>
+								<tr>
+									<td><%=user_list[i].username%><%if (typeof user_list[i].nickname !="undefined"){%>/<%=user_list[i].nickname%><%}%></td>
+									<td><%if (typeof user_list[i].email !="undefined"){%><%=user_list[i].email%><%}%></td>
+									<td><%-helper.bool(user_list[i].active)%></td>
+									<td><%-helper.bool(user_list[i].admin)%></td>
+									<td><span class="badge badge-info"><%=helper.formatDate(user_list[i].create_at)%></span></td>
+									<td><span class="badge badge-info"><%=user_list[i].login_at?helper.formatDate(user_list[i].login_at):""%></span></td>
+									<td><a href="/admin/user/<%=user_list[i]._id%>">修改</a> | <a href="/admin/user/del_post/<%=user_list[i]._id%>" onclick="return removepost(this,function(){window.location.reload()})" title="<%=user_list[i].username%>">删除</a></td>
+								</tr>
+								<% } %>
+							</tbody>
+						</table>
+						<%
+							var url = "/admin/user";
+							var counts = user_count;
+						%>
+						<%include page-nums%>
+					</div>
+				</div>
+			</div><!-- ./smart-widget-inner -->
+		</div>
+	</div>
 </div>
 
 <%include footer%>

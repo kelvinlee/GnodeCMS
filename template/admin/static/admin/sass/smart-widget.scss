@@ -4991,8 +4991,9 @@ label.parsley-error {
 .gallery-list .gallery-item {
     position: relative;
     display: inline-block;
-    width: 33.333333333333336%;
-    padding: 2px
+    width: 24%;
+    padding: 2px;
+    vertical-align: top;
 }
 
 @media (min-width:481px) and (max-width:991px) {
@@ -8459,5 +8460,3 @@ label.parsley-error {
         transform: rotateX(0)
     }
 }
-
-

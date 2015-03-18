@@ -6,6 +6,7 @@
   "dependencies": {
     "coffee-script":"*",
     "express": "*",
+    "multer": "*",
     "cookie-parser":"*",
     "body-parser":"*",
     "express-session":"*",
