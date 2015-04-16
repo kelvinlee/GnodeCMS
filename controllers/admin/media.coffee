@@ -33,7 +33,7 @@ exports.index = (req,res,next)->
 			return console.log err
 		# console.log "success", data
 		files = data.Contents
-		res.render config.templateforadmin+"/media-index",{files:files,cdn:$cdn}
+		res.render config.templateforadmin+"/media-index",{files:files.reverse(),cdn:$cdn}
 	# fs.readdir location , (err,stat)->
 		# console.log stat
 		# res.render config.templateforadmin+"/media-index",{files:stat.reverse()}
