@@ -29,7 +29,7 @@ exports.index = (req,res,next)->
 	(err, data)->
 		console.log err,data
 		if err
-			next(err)
+			next()
 			return console.log err
 		# console.log "success", data
 		files = data.Contents
