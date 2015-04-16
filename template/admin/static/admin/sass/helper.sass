@@ -1,11 +1,21 @@
 // 适配
 =ada($key,$value)
   #{$key}: #{$value}
-  -o-#{$key}: #{$value}
-  -ms-#{$key}: #{$value}
-  -moz-#{$key}: #{$value}
-  -webkit-#{$key}: #{$value}
 
+// 适配图片大小.
+=iw($n,$x: 640,$i4: 80%)
+  $w: $n/$x
+  +w($w*100%)
+  margin: 0 auto
+  .iphone4 &
+    +w($w*$i4)
+
+
+=gradient($angle: 90deg, $star: #333, $end: #999)
+  background: linear-gradient($angle, $star, $end)
+
+=mcenter
+  margin: 0 auto
 // 宽高
 =w($w)
   width: $w
@@ -23,16 +33,16 @@
   position: relative
 =posf()
   position: fixed
-=tl($t,$l)
+=tl($t: 0px,$l: 0px)
   top: $t
   left: $l
-=bl($b,$l)
+=bl($b: 0px,$l: 0px)
   bottom: $b
   left: $l
-=tr($t,$r)
+=tr($t: 0px,$r: 0px)
   top: $t
   right: $r
-=br($b,$r)
+=br($b: 0px,$r: 0px)
   bottom: $b
   right: $r
 =tlr($t:0px,$l:0px,$r:0px)
@@ -51,6 +61,13 @@
   top: $t
   bottom: $b
   right: $r
+// float 定位
+=left
+  float: left
+=right
+  float: right
+=nf
+  float: none
 // 隐藏边框
 =overhide
   overflow: hidden
@@ -59,6 +76,8 @@
   display: block
 =hide
   display: none
+=show-inline
+  display: inline-block
 // text
 =text-center
   text-align: center
@@ -78,20 +97,21 @@
 @mixin keyframes($key)
   @keyframes #{$key}
     @content
-  @-webkit-keyframes #{$key}
-    @content
-  @-moz-keyframes #{$key}
-    @content
-  @-ms-keyframes #{$key}
-    @content
-  @-o-keyframes #{$key}
-    @content
 
 =tran($all: all,$time: .5s,$ease: ease)
   +ada(transition, $all $time $ease)
 
-=animation($ani: fadeInUp,$time: 1s,$ease: ease)
+=anim($ani: fadeInUp,$ease: ease,$count: initial)
+  animation-name: $ani
+  animation-timing-function: $ease
+  +ada(animation-fill-mode, both)
+  +ada(animation-iteration-count, $count)
+
+=animation($ani: fadeInUp,$time: 1s,$ease: ease,$count: initial)
+  // infinite 无限, initial 默认
   +ada(animation, $ani $time $ease)
+  +ada(animation-fill-mode, both)
+  +ada(animation-iteration-count, $count)
 
 =delay($time:.5s)
   +ada(animation-delay, $time)
@@ -99,23 +119,10 @@
 =transform($value)
   +ada(transform, $value)
 
+=blur($b: 5px)
+  filter: blur($b)
 
-// 适配屏幕, large , medium , small
-=large
-  @content
-  @media print, only screen and (-webkit-min-device-pixel-ratio: 1.5), screen and (min-resolution: 144dpi), screen and (min-resolution: 144dppx)
-    @content
-  @media only screen and (max-width: 735px) and (max-device-width: 768px)
-    @content
-
-=medium
-  @media only screen and (max-width: 1024px)
-    @content
-  @media only screen and (max-width: 735px) and (max-device-width: 768px) and (max-width: 1024px)
-    @content
-
-=small
-  @media only screen and (max-width: 735px) and (max-device-width: 768px)
-    @content
-  @media only screen and (max-width: 735px) and (max-device-width: 768px) and (max-width: 735px) and (max-device-width: 768px)
-    @content
+=b($url,$repeat: no-repeat,$top: top,$left: left,$size: initial,$color: transparent)
+  background: url($url) $repeat $top $left
+  background-size: $size
+  background-color: $color

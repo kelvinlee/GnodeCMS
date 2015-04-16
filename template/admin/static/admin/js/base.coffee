@@ -36,6 +36,9 @@ $(document).ready ->
 		return
 	$("[name=dropzone]").dropzone({ url: "/admin/media/upload", addRemoveLinks:"/admin/media/del" }) if $("[name=dropzone]").length>0
 
+	$('.pics').tagsInput({defaultText:"图片名"}) if $('.pics').length>0
+
+
 removepost = (obj,callback = null)->
 	yestopost = ->
 		$.ajax

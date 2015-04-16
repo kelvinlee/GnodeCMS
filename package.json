@@ -1,12 +1,13 @@
 {
-  "name": "Samsung-wechat",
-  "description": "This is samsung wechat.",
+  "name": "GnodeCMS - 52 Area",
+  "description": "This is CMS for 52 Area",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
     "coffee-script":"*",
     "express": "*",
     "multer": "*",
+    "aliyun-sdk": "*",
     "cookie-parser":"*",
     "body-parser":"*",
     "express-session":"*",

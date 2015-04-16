@@ -21,15 +21,17 @@
 		</form>
 		<div class="gallery-list js-masonry m-top-md">
 		<%for (var i = 0;i<files.length;i++) {%>
-		<%if (/(\.jpg|\.png)$/.test(files[i])) {%>
+		<%if (/(\.jpg|\.png)$/.test(files[i].Key)) {%>
+			<% var filename = files[i].Key.split("/"); %>
 			<div class="gallery-item">
 				<div class="gallery-wrapper">
-					<a class="gallery-remove" file="<%=files[i]%>"><i class="fa fa-times"></i></a>
-					<img src="/uploadDir/<%=files[i]%>" alt="">
+					<a class="gallery-remove" file="<%=files[i].Key%>"><i class="fa fa-times"></i></a>
+					<img src="<%=cdn+files[i].Key%>" alt="">
 					
 					<div class="gallery-overlay">
-						<a href="/uploadDir/<%=files[i]%>" class="gallery-action enlarged-photo"><i class="fa fa-search-plus fa-lg"></i></a>
+						<a href="<%=files[i].Key%>" class="gallery-action enlarged-photo"><i class="fa fa-search-plus fa-lg"></i></a>
 						<!-- <a href="gallery.html#" class="gallery-action animation-dalay"><i class="fa fa-link fa-lg"></i></a> -->
+						<div class="gallery-name"><%=filename[filename.length-1]%></div>
 					</div>
 				</div>
 			</div>

@@ -28,7 +28,7 @@ exports.getPage = (id = null,page,next)->
 
 
 exports.new = (type,author,description)->
-	console.log "log author:",author
+	# console.log "log author:",author
 	obj = new Logs()
 	obj.type = type
 	obj.author = author
