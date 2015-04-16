@@ -1,7 +1,8 @@
 ALY = require "aliyun-sdk"
+config = require('../config').config
 oss = new ALY.OSS({
-  "accessKeyId": "6O2CYxQUb33G78S8",
-  "secretAccessKey": "1MOcNXcN5YSawszIDYhMftePcNi0bc",
+  "accessKeyId": config.AccessKeyID,
+  "secretAccessKey": config.AccessKeySecret,
   # 根据你的 oss 实例所在地区选择填入
   # 杭州：http://oss-cn-hangzhou.aliyuncs.com
   # 北京：http://oss-cn-beijing.aliyuncs.com

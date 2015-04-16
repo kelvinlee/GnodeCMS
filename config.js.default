@@ -23,6 +23,9 @@ exports.config={
 	mdb:"mongodb://localhost/gnodecms-database",
 	mdb_user:"",
 	mdb_passwd:"",
+
+	AccessKeyID: "",
+	AccessKeySecret: "",
 	// mydb:"localhost",
 	// db_user:"root",
 	// db_passwd:"mysqlpassword",
@@ -34,6 +37,7 @@ exports.config={
 	auth_cookie_name:"gnodecms_club",
 	ip:"127.0.0.1",
 	port:8086
+
 	// post_interval:2000,
 	// mail_opts:{host:"smtp.126.com",
 	// port:25,
