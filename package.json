@@ -4,10 +4,12 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "webshot":"*",
+    "phantomjs":"*",
+    "aliyun-sdk": "*",
     "coffee-script":"*",
     "express": "*",
     "multer": "*",
-    "aliyun-sdk": "*",
     "cookie-parser":"*",
     "body-parser":"*",
     "express-session":"*",

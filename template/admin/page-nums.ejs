@@ -16,15 +16,15 @@
 	</div>
 	<ul class="pagination pagination-sm pull-right">
 		<%var active = page == 1?"active":""%>
-		<% prelink = url+"/page?prepage="+prepage+"&page="+(page-1)+"&id="+id?id:""; if (active) { prelink = "#" }%>
-		<% nextlink = url+"/page?prepage="+prepage+"&page="+(page+1)+"&id="+id?id:""; if (page >= totalpage) { nextlink = "#" }%>
+		<% prelink = url+"/page?prepage="+prepage+"&page="+(page-1)+"&id="+(id?id:""); if (active) { prelink = "#" }%>
+		<% nextlink = url+"/page?prepage="+prepage+"&page="+(page+1)+"&id="+(id?id:""); if (page >= totalpage) { nextlink = "#" }%>
 		<li><a href="<%=prelink%>">«</a></li>
 		<% if (page<=showpagenum/2) { star = 1}else {star = page-showpagenum/2} %>
 		<% if (star>=totalpage-showpagenum) {end = totalpage}else {end = star+showpagenum} %>
 		<% for (var i = star; i <= end; i++) { %>
 		<% 
 			active = page == i?"active":""; 
-			var pagelink = url+"/page?prepage="+prepage+"&page="+i+"&id="+id?id:""
+			var pagelink = url+"/page?prepage="+prepage+"&page="+i+"&id="+(id?id:"")
 			if (active == "active") {pagelink = "#";}
 		%>
 		<li class="<%=active%>"><a href="<%=pagelink%>"><%=i%></a></li>

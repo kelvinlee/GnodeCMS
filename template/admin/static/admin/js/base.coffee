@@ -63,6 +63,26 @@ removepost = (obj,callback = null)->
 				console.log msg
 	yestopost() if confirm "你确定要删除'#{$(obj).attr("title")}'"
 	return false
+freepost = (url,data,callback = null)->
+	CKupdate()
+	$.ajax
+		type:"post"
+		dataType:"json"
+		url: url
+		data: data
+		success: (msg)->
+			type = "warning"
+			type = "warning" if msg.recode is 201
+			type = "information" if msg.recode is 202
+			type = "error" if msg.recode is 203
+			type = "success" if msg.recode is 200
+			noty
+				text: msg.reason
+				type: type
+				layout: 'topCenter'
+				timeout: '3000'
+			if msg.recode is 200 and callback?
+				callback.call msg
 post = (form,callback = null)->
 	CKupdate()
 	$.ajax

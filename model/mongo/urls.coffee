@@ -3,7 +3,9 @@ config = require('../../config').config
 Urls = models.Urls
 
 exports.getAll = (next)->
-	Urls.find {},next
+	Urls.find({}).sort({create_at:-1}).exec next
+exports.findOne = (where,next)->
+	Urls.findOne where,next
 exports.getbyid = (id,next)->
 	Urls.findById id,next
 exports.getbyauthor = (id,next)->
@@ -15,7 +17,6 @@ exports.getCount = (next)->
 	Urls.find({}).count().exec next
 
 exports.new = (url,description,next)->
-	console.log "url is:",url
 	obj = new Urls()
 	obj.url = url
 	obj.description = description
