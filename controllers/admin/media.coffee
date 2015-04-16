@@ -17,7 +17,7 @@ exports.before = (req,res,next,before)->
 
 exports.index = (req,res,next)->
 	# location = __dirname+"/../../public/uploadDir"
-	console.log "uploadDir"
+	# console.log "uploadDir"
 	oss.listObjects {
 		Bucket: 'giccoo-disk',
 		MaxKeys: '1000',
@@ -27,7 +27,7 @@ exports.index = (req,res,next)->
 		Delimiter: ''
 	},
 	(err, data)->
-		console.log err,data
+		# console.log err,data
 		if err
 			next()
 			return console.log err
