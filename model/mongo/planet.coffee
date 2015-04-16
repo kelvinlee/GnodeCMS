@@ -7,7 +7,7 @@ exports.findOne = (where,next)->
 exports.find = (where,next)->
 	Planet.find where,next
 exports.getAll = (next)->
-	Planet.find {},next
+	Planet.find({}).sort({date: -1}).exec next
 exports.getbyid = (id,next)->
 	Planet.findById id,next
 exports.getbyauthor = (id,next)->
