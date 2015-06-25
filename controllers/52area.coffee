@@ -28,6 +28,7 @@ exports.index = (req,res,next)->
 				url: i.url
 				description: i.description
 				pics: pics
+				thumbnail: pics[0].replace("disk","image")+"@300w_1x.png"
 				author: i.author
 				galaxy: i.galaxy
 				Discoverer: i.Discoverer
